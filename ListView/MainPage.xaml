@@ -15,17 +15,38 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Escribe tu nombre" FontSize="25" VerticalOptions="Center"/>
-        <Entry Grid.Row="1" Grid.ColumnSpan="2" x:Name="txtNombre" Placeholder="Nombre"/>
-        <Button Grid.Row="2" Grid.Column="0" Text="Saludo" Clicked="Button_Clicked" HorizontalOptions="FillAndExpand" BackgroundColor="Green" TextColor="White" CornerRadius="15"/>
-        <Button Grid.Row="2" Grid.Column="1" Text="Limpiar" Clicked="Button_Clicked_2" HorizontalOptions="FillAndExpand" BackgroundColor="CadetBlue" TextColor="White" CornerRadius="15"/>
-        <Label Grid.Row="3" Grid.ColumnSpan="2" x:Name="lblMensaje" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center"/>
+        <Entry Grid.Row="0" Grid.ColumnSpan="3" x:Name="txtNombre" Placeholder="Nombre"/>
+        <Entry Grid.Row="1" Grid.ColumnSpan="3" x:Name="txtCorreo" Placeholder="Correo-e"/>
+        <Entry Grid.Row="2" Grid.ColumnSpan="3" x:Name="txtTelefono" Placeholder="Teléfono"/>
+        <Button Grid.Row="3" Grid.Column="0" Text="Agregar" Clicked="Boton_Agregar" HorizontalOptions="FillAndExpand" BackgroundColor="Green" TextColor="White" CornerRadius="15"/>
+        <Button Grid.Row="3" Grid.Column="1" Text="Modificar" Clicked="Button_Clicked" HorizontalOptions="FillAndExpand" BackgroundColor="Green" TextColor="White" CornerRadius="15"/>
+        <Button Grid.Row="3" Grid.Column="2" Text="Eliminar" Clicked="Button_Clicked_2" HorizontalOptions="FillAndExpand" BackgroundColor="CadetBlue" TextColor="White" CornerRadius="15"/>
+        <!--<Label Grid.Row="3" Grid.ColumnSpan="2" x:Name="lblMensaje" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center"/>-->
+
+        <ListView x:Name="lstPersonas" Grid.Row="4" Grid.ColumnSpan="3" ItemSelected="lstPersonas_ItemSelected" ItemsSource="{Binding Persona}" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="{Binding Nombre}" VerticalOptions="Center"/>
+                            <StackLayout>
+                                <Label Text="{Binding Correo}" VerticalOptions="Center"/>
+                                <Label Text="{Binding Telefono}" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                    <!--<TextCell Text="{Binding Nombre}" Detail="{Binding Correo}" TextColor="Blue" DetailColor="Green"></TextCell>-->
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 
 </ContentPage>
