@@ -10,9 +10,15 @@ namespace ListView
 {
     public partial class MainPage : ContentPage
     {
+        public List<string> Nombres { get; set; }
         public MainPage()
         {
             InitializeComponent();
+            Nombres = new List<string>();
+            Nombres.Add("Nombre 1");
+            Nombres.Add("Nombre 2");
+            Nombres.Add("Nombre 3");
+            Nombres.Add("Nombre 4");
         }
 
         private void Button_Clicked(object sender, EventArgs e)
@@ -27,7 +33,8 @@ namespace ListView
 
         private void Button_Clicked_2(object sender, EventArgs e)
         {
-
+            txtNombre.Text = "";
+            lblMensaje.Text = "";
         }
     }
 }
