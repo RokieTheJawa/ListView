@@ -12,6 +12,8 @@ namespace ListView
     public partial class MainPage : ContentPage
     {
         public List<Persona> Personas { get; set; }
+
+        public int indice;
         public MainPage()
         {
             InitializeComponent();
@@ -43,26 +45,37 @@ namespace ListView
             lstPersonas.ItemsSource = Personas;
         }
 
-        private void Button_Clicked_1(object sender, EventArgs e)
+        private void Boton_Modificar (object sender, EventArgs e)
         {
+            Personas.RemoveAt(indice);
+            Personas.Insert(indice, new Persona() { Nombre = txtNombre.Text, Correo = txtCorreo.Text, Telefono = txtTelefono.Text });
+
+            lstPersonas.ItemsSource = null;
+            lstPersonas.ItemsSource = Personas;
 
         }
 
-        private void Button_Clicked_2(object sender, EventArgs e)
+        private void Boton_Borrar(object sender, EventArgs e)
         {
             txtNombre.Text = "";
+            txtCorreo.Text = "";
+            txtTelefono.Text = "";
             //lblMensaje.Text = "";
+
+            Personas.RemoveAt(indice);
+
+            lstPersonas.ItemsSource = null;
+            lstPersonas.ItemsSource = Personas;
         }
 
         private void lstPersonas_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             Persona persona = (Persona)e.SelectedItem;
-            txtNombre.Text = persona.Nombre + " - Posición: "+ e.SelectedItemIndex;
+            indice = e.SelectedItemIndex;
+            txtNombre.Text = persona.Nombre;
+            txtCorreo.Text = persona.Correo;
+            txtTelefono.Text = persona.Telefono;
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-
-        }
     }
 }
