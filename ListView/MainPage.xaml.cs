@@ -9,6 +9,7 @@ using Xamarin.Forms;
 
 namespace ListView
 {
+//test
     public partial class MainPage : ContentPage
     {
         public List<Persona> Personas { get; set; }
@@ -20,7 +21,7 @@ namespace ListView
 
             Personas = new List<Persona>();
 
-            //Personas.Add(new Persona() { Nombre = "Persona 1", Correo = "correo1@ucol.mx" });
+            Personas.Add(new Persona() { Nombre = "Persona 1", Correo = "correo1@ucol.mx", Telefono = "1234224232" });
             //Personas.Add(new Persona() { Nombre = "Persona 2", Correo = "correo2@ucol.mx" });
             //Personas.Add(new Persona() { Nombre = "Persona 3", Correo = "correo3@ucol.mx" });
             //Personas.Add(new Persona() { Nombre = "Persona 4", Correo = "correo4@ucol.mx" });
@@ -49,7 +50,7 @@ namespace ListView
         {
             Personas.RemoveAt(indice);
             Personas.Insert(indice, new Persona() { Nombre = txtNombre.Text, Correo = txtCorreo.Text, Telefono = txtTelefono.Text });
-
+            
             lstPersonas.ItemsSource = null;
             lstPersonas.ItemsSource = Personas;
 
