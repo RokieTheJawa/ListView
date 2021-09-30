@@ -25,24 +25,16 @@
         <Button Grid.Row="3" Grid.Column="2" Text="Eliminar" Clicked="Boton_Borrar" HorizontalOptions="FillAndExpand" BackgroundColor="PaleVioletRed" TextColor="White" CornerRadius="15"/>
         <!--<Label Grid.Row="3" Grid.ColumnSpan="2" x:Name="lblMensaje" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center"/>-->
 
-        <ListView x:Name="lstPersonas" Grid.Row="4" Grid.ColumnSpan="3" ItemSelected="lstPersonas_ItemSelected" ItemsSource="{Binding Persona}" HasUnevenRows="True" >
+        <ListView x:Name="lstPersonas" Grid.Row="4" Grid.ColumnSpan="3" ItemSelected="lstPersonas_ItemSelected" HasUnevenRows="True" SeparatorColor="Red" FooterTemplate="">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <!--<Label Text="Nombre:" />-->
-                            <Label Text="{Binding Nombre}"/>
-                            <StackLayout>
-                                <!--<Label Text="Correo:"/>-->
-                                <Label Text="{Binding Correo}"/>
-                                <!--</StackLayout>-->
-                                <!--<StackLayout>-->
-                                <!--<Label Text="Telefono:"/>-->
-                                <Label Text="{Binding Telefono}"/>
-                            </StackLayout>
+                            <Label Text="{Binding Nombre, StringFormat='Nombre: {0}'}"/>
+                            <Label Text="{Binding Correo, StringFormat='Correo: {0}'}"/>
+                            <Label Text="{Binding Telefono, StringFormat='Teléfono {0}'}"/>
                         </StackLayout>
                     </ViewCell>
-                        <!--<TextCell Text="{Binding Nombre}" Detail="{Binding Correo}" TextColor="Blue" DetailColor="Green"></TextCell>-->
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
